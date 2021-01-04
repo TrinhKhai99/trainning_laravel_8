@@ -64,4 +64,45 @@ class ProductController extends Controller
             'status' => 200,
         ]);
     }
+
+    /**
+     * create or update product
+     *
+     * @param  Request $request
+     * @return Json
+     */
+    public function store(Request $request) {
+        $product_data = $request->only([
+            "id",
+            "category_id",
+            "name",
+            "image",
+            "amount",
+            "expiration_date",
+            "entry_date",
+        ]);
+
+        $validator = $this->product_service->validate($product_data);
+        if($validator->fails()){
+            return response()->json([
+                'errors' => $validator->errors(),
+                'status' => 200,
+            ]);
+        }
+
+        $product = $this->product_service->createOrUpdate($product_data);
+
+        if(!$product){
+            return response()->json([
+                'errors' => [trans('message.internal_server_error')],
+                'status' => 200,
+            ]);
+        }
+
+        return response()->json([
+            'data' => new ProductResource($product),
+            'message' => $product_data['id'] ?__('message.updated', ['field' => 'Product']) : __('message.created', ['field' => 'Product']),
+            'status' => 200,
+        ]);
+    }
 }
