@@ -101,7 +101,17 @@ class ProductController extends Controller
 
         return response()->json([
             'data' => new ProductResource($product),
-            'message' => $product_data['id'] ?__('message.updated', ['field' => 'Product']) : __('message.created', ['field' => 'Product']),
+            'message' => $product_data['id'] ? __('message.updated', ['field' => 'Product']) : __('message.created', ['field' => 'Product']),
+            'status' => 200,
+        ]);
+    }
+
+    public function destroy($id) {
+        $product = $this->product_service->deleteProduct($id);
+
+        return response()->json([
+            'data' => new ProductResource($product),
+            'message' => __('message.deleted', ['field' => 'Product']),
             'status' => 200,
         ]);
     }
