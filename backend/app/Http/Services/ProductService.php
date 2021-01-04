@@ -114,4 +114,26 @@ class ProductService
             'amount.required' => trans('validation.required', ['attribute' => 'amount']),
         ];
     }
+
+    public function deleteProduct($id) {
+        $product = Product::where('id', $id)
+            ->withTrashed()
+            ->first();
+
+        // 1. In case the id cannot be found
+        if(!$product) {
+            return [];
+        }
+
+        if(!$product->trashed()){
+            // 2. Delete Product
+            try {
+                $product->delete();
+            } catch(\PDOException $ex) {
+                return null;
+            }
+        }
+
+        return $product;
+    }
 }
