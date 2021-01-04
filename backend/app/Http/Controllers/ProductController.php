@@ -40,6 +40,22 @@ class ProductController extends Controller
         ]);
     }
 
+    public function search(Request $request) {
+        $per_page = 25;
+
+        if($request->has('per_page')){
+            $per_page = $request->per_page;
+        }
+
+        $products = $this->product_service->searchProducts($request->all(), $per_page);
+
+        return response()->json([
+            'data' => $products,
+            'message' => '',
+            'status' => 200,
+        ]);
+    }
+
     /**
      * get product
      *

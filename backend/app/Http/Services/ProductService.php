@@ -3,6 +3,7 @@
 namespace App\Http\Services;
 use App\Models\Product;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Arr;
 use Carbon\Carbon;
 
 class ProductService
@@ -26,6 +27,21 @@ class ProductService
         $products = $products->paginate($per_page);
 
         return $products;
+    }
+
+    public function searchProducts($params, $per_page) {
+
+        $params = array_filter($params, function($value) {
+            return $value != null && $value != '';
+        });
+
+        $where_query = Arr::only($params, ['entry_date', 'expiration_date', 'page', 'id']);
+
+        $product = Product::where($where_query);
+
+        $product = $product->paginate($per_page);
+
+        return $product;
     }
 
     /**

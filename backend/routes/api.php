@@ -18,6 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('products','ProductController@index');
+Route::get('products/search','ProductController@search');
 Route::get('products/{id}','ProductController@show');
 Route::post('products','ProductController@store');
 Route::delete('products/{id}','ProductController@destroy');
