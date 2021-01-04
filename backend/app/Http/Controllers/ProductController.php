@@ -15,6 +15,12 @@ class ProductController extends Controller
         $this->product_service = $product_service;
     }
 
+    /**
+     * get list products
+     *
+     * @param  Request $request
+     * @return Json
+     */
     public function index(Request $request)
     {
         $per_page = 25;
@@ -25,8 +31,37 @@ class ProductController extends Controller
 
         $products = $this->product_service->getProducts($per_page);
 
-        $company_product = ProductResource::collection($products);
+        $products = ProductResource::collection($products);
 
-        return $company_product;
+        return response()->json([
+            'data' => $products,
+            'message' => '',
+            'status' => 200,
+        ]);
+    }
+
+    /**
+     * get product
+     *
+     * @param  Request $request
+     * @return Json
+     */
+    public function show($id)
+    {
+        $product = $this->product_service->getProduct($id);
+
+        if(!$product) {
+            return response()->json([
+                'data' => [],
+                'message' => __('message.exist', ['field' => 'Product']),
+                'status' => 200,
+            ]);
+        }
+
+        return response()->json([
+            'data' => new ProductResource($product),
+            'message' => '',
+            'status' => 200,
+        ]);
     }
 }

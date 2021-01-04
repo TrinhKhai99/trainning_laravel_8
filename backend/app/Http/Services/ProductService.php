@@ -5,17 +5,37 @@ use App\Models\Product;
 
 class ProductService
 {
+    /**
+     * Get list products
+     *
+     * @param  $per_page
+     * @return $object
+     */
     public function getProducts($per_page) {
 
-        $product = Product::withTrashed();
+        $products = Product::withTrashed();
 
         if($per_page == 0) {
-            $product = $product->get();
+            $products = $products->get();
 
-            return $product;
+            return $products;
         }
 
-        $product = $product->paginate($per_page);
+        $products = $products->paginate($per_page);
+
+        return $products;
+    }
+
+    /**
+     * Get product
+     *
+     * @param  $id
+     * @return $object
+     */
+    public function getProduct($id) {
+        $product = Product::where('id', $id)
+            ->withTrashed()
+            ->first();
 
         return $product;
     }
