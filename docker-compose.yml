@@ -1,0 +1,36 @@
+version: "3"
+
+services:
+  backend:
+    build:
+      context: docker/backend
+    working_dir: /var/www/html
+    volumes:
+      - ./docker/backend/etc/apache2/sites-enabled/:/etc/apache2/sites-enabled/
+      - ./backend:/var/www/html
+    ports:
+      - "2281:80"
+    depends_on:
+      - mysql
+
+  frontend:
+    build:
+      context: docker/frontend
+    working_dir: /var/www/html
+    volumes:
+      - ./frontend:/var/www/html
+    ports:
+      - "2280:8080"
+    command: yarn cache clean && yarn run dev
+    depends_on:
+      - backend
+
+  mysql:
+    image: mysql:5.7
+    ports:
+      - "2283:3306"
+    environment:
+      MYSQL_DATABASE: base_env
+      MYSQL_USER: base_env
+      MYSQL_PASSWORD: base_env
+      MYSQL_ROOT_PASSWORD: root
