@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.w-30 {
+    width: 30%;
+}
+.d-flex-around {
+    display: flex;
+    justify-content: space-around;
+}
+.w-100 {
+    width: 100%;
+}
+.list-enter,
+  .list-leave-to {
+    opacity: 0;
+      transform: translateX(-2em)
+  }
+
+  .list-enter-active,
+  .list-leave-active {
+    transition: all 0.3s ease-in-out;
+  }
+  .fade-enter, .fade-leave-to {
+      opacity: 0;
+      transform: translateX(-2em)
+  }
+  .fade-enter-active, .fade-leave-active {
+      transition: all .3s ease-in-out
+  }

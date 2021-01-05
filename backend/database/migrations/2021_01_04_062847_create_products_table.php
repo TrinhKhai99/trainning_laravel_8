@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('category_id');
             $table->string('name');
-            $table->string('image');
+            $table->string('image')->nullable();
             $table->integer("amount");
             $table->date("expiration_date");
             $table->date("entry_date");

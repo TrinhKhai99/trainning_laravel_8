@@ -5,5 +5,6 @@ return [
     'created' => ':field was created',
     'updated' => ':field was updated',
     'deleted' => ':field was deleted',
-    'exist' => ':field does not exist'
+    'uploaded' => ':field uploaded',
+    'exist' => ':field does not exist',
 ];

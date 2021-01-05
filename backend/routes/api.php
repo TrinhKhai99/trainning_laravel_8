@@ -21,4 +21,7 @@ Route::get('products','ProductController@index');
 Route::get('products/search','ProductController@search');
 Route::get('products/{id}','ProductController@show');
 Route::post('products','ProductController@store');
+Route::post('products/upload','ProductController@upload');
 Route::delete('products/{id}','ProductController@destroy');
+
+Route::get('category','CategoryController@index');
