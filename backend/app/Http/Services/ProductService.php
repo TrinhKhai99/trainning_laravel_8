@@ -4,6 +4,8 @@ namespace App\Http\Services;
 use App\Models\Product;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use Carbon\Carbon;
 
 class ProductService
@@ -16,7 +18,7 @@ class ProductService
      */
     public function getProducts($per_page) {
 
-        $products = Product::withTrashed();
+        $products = new Product;
 
         if($per_page == 0) {
             $products = $products->get();
@@ -29,6 +31,12 @@ class ProductService
         return $products;
     }
 
+    /**
+     * search product
+     *
+     * @param  $params, $per_page
+     * @return $object
+     */
     public function searchProducts($params, $per_page) {
 
         $params = array_filter($params, function($value) {

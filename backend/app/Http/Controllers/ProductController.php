@@ -7,9 +7,12 @@ use App\Http\Services\ProductService;
 use App\Http\Resources\ProductResource as ProductResource;
 use Illuminate\Http\Response as Response;
 use App\Models\Product;
+use App\Traits\StorageTrait;
 
 class ProductController extends Controller
 {
+    use StorageTrait;
+
     public function __construct(ProductService $product_service)
     {
         $this->product_service = $product_service;
@@ -33,13 +36,15 @@ class ProductController extends Controller
 
         $products = ProductResource::collection($products);
 
-        return response()->json([
-            'data' => $products,
-            'message' => '',
-            'status' => 200,
-        ]);
+        return $products;
     }
 
+    /**
+     * search products
+     *
+     * @param  Request $request
+     * @return Json
+     */
     public function search(Request $request) {
         $per_page = 25;
 
@@ -70,7 +75,7 @@ class ProductController extends Controller
             return response()->json([
                 'data' => [],
                 'message' => __('message.exist', ['field' => 'Product']),
-                'status' => 200,
+                'status' => 400,
             ]);
         }
 
@@ -122,6 +127,12 @@ class ProductController extends Controller
         ]);
     }
 
+    /**
+     * delete product
+     *
+     * @param  Request $request
+     * @return Json
+     */
     public function destroy($id) {
         $product = $this->product_service->deleteProduct($id);
 
@@ -130,5 +141,29 @@ class ProductController extends Controller
             'message' => __('message.deleted', ['field' => 'Product']),
             'status' => 200,
         ]);
+    }
+
+    /**
+     * upload file.
+     *
+     * @param  Request $request
+     * @return json
+     */
+    public function upload(Request $request) {
+        if($request->file()) {
+            $path = './static/uploads/tmp/';
+            $file_upload = $this->uploadFile($request->file('file'), $path);
+        }
+
+        return response()->json([
+            'data' => $path . $file_upload,
+            'message' => __('message.uploaded', ['field' => 'Product']),
+            'status' => 200,
+        ]);
+    }
+
+    private function createDir($dir)
+    {
+        Storage::disk('public')->makeDirectory($dir);
     }
 }
