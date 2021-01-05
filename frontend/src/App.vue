@@ -1,18 +1,21 @@
 <template>
-  <router-view></router-view>
+  <div>
+    <transition name="fade" mode="out-in">
+      <router-view></router-view>
+    </transition>
+  </div>
 </template>
 
 <script>
-
 export default {
-  name: 'App',
-  components: {
-  }
-}
+  name: "App",
+  components: {},
+};
 </script>
 
 <style>
 @import url("../node_modules/bootstrap/dist/css/bootstrap.min.css");
+@import "./assets/css/style.css";
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

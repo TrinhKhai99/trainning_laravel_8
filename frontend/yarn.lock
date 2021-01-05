@@ -3177,6 +3177,11 @@ dotenv@^8.2.0:
   resolved "https://registry.npm.taobao.org/dotenv/download/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
   integrity sha1-l+YZJZradQ7qPk6j4mvO6lQksWo=
 
+dropzone@^5.5.1:
+  version "5.7.2"
+  resolved "https://registry.yarnpkg.com/dropzone/-/dropzone-5.7.2.tgz#91bee1572dda515d40901da304bc79dddf309b4c"
+  integrity sha512-m217bJHtf0J1IiKn4Tv6mnu1h5QvQNBnKZ39gma7hzGQhIZMxYq1vYEHs4AVd4ThFwmALys+52NAOD4zdLTG4w==
+
 duplexer@^0.1.1:
   version "0.1.2"
   resolved "https://registry.npm.taobao.org/duplexer/download/duplexer-0.1.2.tgz?cache=0&sync_timestamp=1597221024621&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fduplexer%2Fdownload%2Fduplexer-0.1.2.tgz#3abe43aef3835f8ae077d136ddce0f276b0400e6"
@@ -5409,6 +5414,11 @@ mkdirp@^0.5.1, mkdirp@^0.5.3, mkdirp@^0.5.5, mkdirp@~0.5.1:
   dependencies:
     minimist "^1.2.5"
 
+moment@^2.29.1:
+  version "2.29.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
+  integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
+
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npm.taobao.org/move-concurrently/download/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
@@ -5625,6 +5635,11 @@ npm-run-path@^4.0.0:
   integrity sha1-t+zR5e1T2o43pV4cImnguX7XSOo=
   dependencies:
     path-key "^3.0.0"
+
+nprogress@0.2.0, nprogress@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/nprogress/-/nprogress-0.2.0.tgz#cb8f34c53213d895723fcbab907e9422adbcafb1"
+  integrity sha1-y480xTIT2JVyP8urkH6UIq28r7E=
 
 nth-check@^1.0.2:
   version "1.0.2"
@@ -8074,6 +8089,18 @@ vue-loader@^15.9.2:
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
 
+vue-lodash@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/vue-lodash/-/vue-lodash-2.1.2.tgz#1ec2b1471ee289518e8d285250a25516adee6c51"
+  integrity sha512-6QsNC7/XjrK4xKxFhh6Ppvcrfm0uAeR/lFsySsMgfEFUWkvRztcAIS3MsqAI4bBnAaLo9ou+8tUfJ8d+yrljQg==
+
+vue-nprogress@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/vue-nprogress/-/vue-nprogress-0.2.0.tgz#92a99f605dd152bdd4fc940ab0ca535723a5b394"
+  integrity sha512-lTJvEQEt7Pxdc6jwUZf3m4t8emrrBecXxzSLT1G9eIjRQE4kOh7Y+ECjc5R1qrNyyuDqHCTKZMaH5bXy17IS5g==
+  dependencies:
+    nprogress "0.2.0"
+
 vue-router@^3.4.9:
   version "3.4.9"
   resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-3.4.9.tgz#c016f42030ae2932f14e4748b39a1d9a0e250e66"
@@ -8100,10 +8127,29 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.npm.taobao.org/vue-template-es2015-compiler/download/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha1-HuO8mhbsv1EYvjNLsV+cRvgvWCU=
 
-vue@^2.6.11:
+vue2-daterange-picker@^0.6.2:
+  version "0.6.2"
+  resolved "https://registry.yarnpkg.com/vue2-daterange-picker/-/vue2-daterange-picker-0.6.2.tgz#41f78ab14303104cb7e640e5f36ee8da607b9212"
+  integrity sha512-QGDWdyjTjUHTLX5eqQ2qr+/lbl0aEVRNF8Ls1cPfHRiLNoeJ3CnQ0O412EXFqiimSI0559EUILDXRy5tD/K7AA==
+  dependencies:
+    vue "^2.6.10"
+
+vue2-dropzone@^3.6.0:
+  version "3.6.0"
+  resolved "https://registry.yarnpkg.com/vue2-dropzone/-/vue2-dropzone-3.6.0.tgz#b4bb4b64de1cbbb3b88f04b24878e06780a51546"
+  integrity sha512-YXC1nCWIZvfa98e/i6h+EshZCkFSxFEh0Sxr9ODfThAPPDVhAzLLlz/4XIx0NGO1QeSy6htwSstte47R7vVhLQ==
+  dependencies:
+    dropzone "^5.5.1"
+
+vue@^2.6.10, vue@^2.6.11:
   version "2.6.12"
   resolved "https://registry.npm.taobao.org/vue/download/vue-2.6.12.tgz#f5ebd4fa6bd2869403e29a896aed4904456c9123"
   integrity sha1-9evU+mvShpQD4pqJau1JBEVskSM=
+
+vuejs-datepicker@^1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/vuejs-datepicker/-/vuejs-datepicker-1.6.2.tgz#83c1e8fd4108e7f1d01c061a7e344918f25e47ae"
+  integrity sha512-PkC4vxzFBo7i6FSCUAJfnaWOx6VkKbOqxijSGHHlWxh8FIUKEZVtFychkonVWtK3iwWfhmYtqHcwsmgxefLpLQ==
 
 vuex@^3.6.0:
   version "3.6.0"
