@@ -54,11 +54,9 @@ class ProductController extends Controller
 
         $products = $this->product_service->searchProducts($request->all(), $per_page);
 
-        return response()->json([
-            'data' => $products,
-            'message' => '',
-            'status' => 200,
-        ]);
+        $products = ProductResource::collection($products);
+
+        return $products;
     }
 
     /**

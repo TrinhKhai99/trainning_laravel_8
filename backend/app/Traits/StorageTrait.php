@@ -17,7 +17,6 @@ trait StorageTrait {
 
         $current_date_time = Carbon::now()->toDateTimeString();
 
-        dd($current_date_time);
         if(!Storage::disk('public')->exists($path)) {
             if(!Storage::disk('public')->exists(dirname($path))) {
                 Storage::disk('public')->makeDirectory($path);

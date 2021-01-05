@@ -43,7 +43,9 @@ class ProductService
             return $value != null && $value != '';
         });
 
-        $where_query = Arr::only($params, ['entry_date', 'expiration_date', 'page', 'id']);
+        $where_query = Arr::only($params, ['entry_date', 'expiration_date', 'id', 'category_id']);
+
+        $between_query = Arr::only($params, ['entry_date', 'expiration_date']);
 
         $product = Product::where($where_query);
 
